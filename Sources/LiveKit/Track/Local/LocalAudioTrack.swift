@@ -93,6 +93,15 @@ public class LocalAudioTrack: Track, LocalTrack, AudioTrack, @unchecked Sendable
             throw error
         }
     }
+
+    override func stopCapture() async throws {
+        do {
+            try AudioManager.shared.stopLocalRecording()
+        } catch {
+            // Rethrow
+            throw error
+        }
+    }
 }
 
 public extension LocalAudioTrack {
